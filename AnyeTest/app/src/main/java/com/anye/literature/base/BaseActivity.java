@@ -7,13 +7,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.anye.literature.baserx.RxManager;
+import com.anye.literature.ui.presenter.LoadingPresenter;
 import com.anye.literature.util.TUtil;
 
 /**
  * Created by zkk_g on 2017/7/20.
  */
 
-public abstract class BaseActivity<T extends  BasePresenter,E extends  BaseModel> extends AppCompatActivity{
+public abstract class BaseActivity<T extends LoadingPresenter,E extends  BaseModel> extends AppCompatActivity{
     public T mPresenter;
     public E mModel;
     public Context mContext;
@@ -34,6 +35,7 @@ public abstract class BaseActivity<T extends  BasePresenter,E extends  BaseModel
         }
         initPresenter();
         initView();
+        initData();
     }
     //获取布局文件
     public abstract int getLayoutId();
@@ -42,6 +44,8 @@ public abstract class BaseActivity<T extends  BasePresenter,E extends  BaseModel
     public abstract void initPresenter();
     //初始化view
     public abstract void initView();
+
+    public abstract  void initData();
 
     /**
      * 含有Bundle通过Class跳转界面
